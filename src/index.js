@@ -3,6 +3,9 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import PixabayApiService from './pixabay-service';
+// import galleryCardTml from './templates/gallery-card.hbs';
+import galleryCardsTml from './templates/gallery-cards.hbs';
+
 
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
@@ -83,34 +86,8 @@ function createGallery({hits, totalHits}) {
 }
     
 function renderGallery(hits) {
-  const markup =  hits.map(hit => `
-    <div class="photo-card">
-    <a href = "${hit.largeImageURL}">
-  <img src="${hit.webformatURL}" alt="${hit.tags}" loading="lazy" />
-  </a>
-  <div class="info">
-    <p class="info-item">
-      <b>Likes</b>
-      <span>${hit.likes}</span>
-    </p>
-    <p class="info-item">
-      <b>Views</b>
-      <span>${hit.views}</span>
-    </p>
-    <p class="info-item">
-      <b>Comments</b>
-      <span>${hit.comments}</span>
-    </p>
-    <p class="info-item">
-      <b>Downloads</b>
-      <span>${hit.downloads}</span>
-    </p>
-  </div>
-  
-</div>
-    `
-).join("");
-    
+  // const markup =  hits.map(hit => galleryCardTml(hit)).join("");
+  const markup = galleryCardsTml(hits);
   gallery.insertAdjacentHTML("beforeend", markup);  
 }
   

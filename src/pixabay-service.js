@@ -17,9 +17,9 @@ export default class PixabayApiService {
         // console.log(responce.json());
         // const { hits, totalHits } = await responce.json();
         
-        const responce = await axios(url);
-        console.log(responce);
-        const { hits, totalHits } = responce.data;
+        const response = await axios(url);
+        console.log(response);
+        const { hits, totalHits } = response.data;
         console.log({ hits, totalHits });
 
         this.incrementPage();
